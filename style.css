@@ -1,0 +1,407 @@
+* {
+    margin: 0;
+    background-color: whitesmoke;
+    font-family: Poppins;
+   
+}
+/* top menu  */
+.top {
+    height: 35px;
+    background-color: #000957;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.top-left-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: transparent;
+}
+.menu-item {
+    margin: 5px;
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+   
+}
+.top-right-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: transparent;
+}
+/* navbar */
+.navbar {
+    background-color: white;
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    }
+.nav-item {
+    color: #000957;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: transparent;
+}
+/* carousel */
+.carousel{
+    height: 80vh;
+    margin-top: 0px;
+    width: 99vw;
+    overflow: hidden;
+    position: relative;
+}
+.carousel .list .item{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0 0 0 0;
+}
+.carousel .list .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* thumbail */
+.thumbnail{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    width: max-content;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+    background-color: transparent;
+}
+.thumbnail .item{
+    width: 150px;
+    height: 220px;
+    flex-shrink: 0;
+    position: relative;
+    background-color: transparent;
+}
+.thumbnail .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    background-color: transparent;
+}
+/* arrows */
+.arrows{
+    position: absolute;
+    top: 80%;
+    right: 52%;
+    z-index: 100;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background-color: transparent;
+}
+.arrows button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eee4;
+    border: none;
+    color: #fff;
+    font-family: monospace;
+    font-weight: bold;
+    transition: .5s;
+}
+.arrows button:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+/* animation */
+.carousel .list .item:nth-child(1){
+    z-index: 1;
+}
+
+/* create animation when next click */
+.carousel.next .list .item:nth-child(1) img{
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 30px;
+    animation: showImage .5s linear 1 forwards;
+}
+@keyframes showImage{
+    to{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+.carousel.next .thumbnail .item:nth-last-child(1){
+    overflow: hidden;
+    animation: showThumbnail .5s linear 1 forwards;
+}
+.carousel.prev .list .item img{
+    z-index: 100;
+}
+@keyframes showThumbnail{
+    from{
+        width: 0;
+        opacity: 0;
+    }
+}
+.carousel.next .thumbnail{
+    animation: effectNext .5s linear 1 forwards;
+}
+
+@keyframes effectNext{
+    from{
+        transform: translateX(150px);
+    }
+}
+
+/* running time */
+
+.carousel .time{
+    position: absolute;
+    z-index: 1000;
+    width: 0%;
+    height: 3px;
+    background-color: #000957;
+    left: 0;
+    top: 0;
+}
+
+.carousel.next .time,
+.carousel.prev .time{
+    animation: runningTime 3s linear 1 forwards;
+}
+@keyframes runningTime{
+    from{ width: 100%}
+    to{width: 0}
+}
+
+
+/* prev click */
+
+.carousel.prev .list .item:nth-child(2){
+    z-index: 2;
+}
+
+.carousel.prev .list .item:nth-child(2) img{
+    animation: outFrame 0.5s linear 1 forwards;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+@keyframes outFrame{
+    to{
+        width: 150px;
+        height: 220px;
+        bottom: 50px;
+        left: 50%;
+        border-radius: 20px;
+    }
+}
+
+.carousel.prev .thumbnail .item:nth-child(1){
+    overflow: hidden;
+    opacity: 0;
+    animation: showThumbnail .5s linear 1 forwards;
+}
+.carousel.next .arrows button,
+.carousel.prev .arrows button{
+    pointer-events: none;
+}
+.carousel.prev .list .item:nth-child(2) .content .author,
+.carousel.prev .list .item:nth-child(2) .content .title,
+.carousel.prev .list .item:nth-child(2) .content .topic,
+.carousel.prev .list .item:nth-child(2) .content .des,
+.carousel.prev .list .item:nth-child(2) .content .buttons
+{
+    animation: contentOut 1.5s linear 1 forwards!important;
+}
+
+@keyframes contentOut{
+    to{
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+@media screen and (max-width: 678px) {
+    .carousel .list .item .content{
+        padding-right: 0;
+    }
+    .carousel .list .item .content .title{
+        font-size: 30px;
+    }
+}
+
+/* about jis */
+
+.about-jis-heading-container {
+    margin-top: 25px;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+}
+.about-jis-heading {
+    background-color: transparent;
+   margin-top: 20px;
+   margin-bottom: 20px;
+  color: #000957;
+  font-size: 50px;
+  font-weight: bold;
+}
+.about-jis-content-container {
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    
+}
+.about-jis-content {
+    background-color: white;
+    font-size: 20px;
+    width: 1100px;
+    padding: 10px;
+    text-align: justify;
+    border-radius: 10px;
+    
+}
+
+/* events , announcements, key projects*/
+
+.heading-container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+.heading {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #000957;
+    font-size: 50px;
+    font-weight: bold;
+}
+.featured {
+    display: flex;
+    justify-content: space-around;
+}
+.div1 {
+    background-color: white;
+    border-radius: 5px;
+    height: 300px;
+    width: 600px;
+    padding: 10px;
+}
+.div1-container {
+background-color: transparent;
+color:rgb(94, 93, 93);
+text-align: justify;
+}
+.title{
+    background-color: transparent;
+    color: #000957;
+    font-size: 23px;
+    margin: 5px;
+}
+.div-cr {
+    background-color: #000957;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    padding: 7px;
+    margin-left: 5px;
+}
+.view-all-container{
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+}
+.view-all {
+    background-color: #000957;
+    border-radius: 7px;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+   
+}
+/* notifiation */
+.notice {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+.notice-container {
+    background-color: white;
+    border-radius: 5px;
+    height: 300px;
+    width: 600px;
+    padding: 10px;
+}
+.n-text {
+    background-color: transparent;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+
+}
+/* contact us */
+.contact-us {
+    background-color: #000957;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+.left-footer{
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+}
+.mail {
+    background-color: transparent;
+    margin-left: 3px;
+    margin-right: 5px;
+    color: white;
+}
+
+.wp{
+    background-color: transparent;
+    margin-left: 2px;
+    margin-right: 5px;
+    color: white;
+}
+.mid-footer{
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+}
+.right-footer{
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+}
+.jis {
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+    margin-left: 0px;
+    margin-right: 5px;
+}
+.copy-right {
+    background-color: transparent;
+    color: white;
+}
